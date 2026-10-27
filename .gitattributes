@@ -1,0 +1,2 @@
+# Treat flake.lock as binary in git diffs to keep commit history clean
+flake.lock binary linguist-generated=true
