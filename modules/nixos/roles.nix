@@ -106,9 +106,11 @@ in
     (lib.mkIf cfg.gaming.enable {
       # Use CachyOS kernel and Valve's LAVD BPF scheduler (only on physical gaming hosts)
       boot.kernelPackages = lib.mkIf (config.mySystem.hardware.gpu != "vm") pkgs.linuxPackages_cachyos;
-      chaotic.nyx = {
+
+      # Native NixOS module for sched-ext
+      services.scx = {
         enable = config.mySystem.hardware.gpu != "vm";
-        scheduler = "scx_lavd";
+        scheduler = "scx_lavd"; # LAVD scheduler optimized for gaming/responsiveness
       };
 
       programs.steam = {
