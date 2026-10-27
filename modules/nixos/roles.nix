@@ -42,15 +42,6 @@ in
       # Ensure niri.service explicitly wants dms.service (replaces 10-dms-wants.conf)
       systemd.user.services.niri.wants = [ "dms.service" ];
 
-      # Automatic daily background updates for Flatpaks
-      services.flatpak = {
-        enable = true;
-        update.auto = {
-          enable = true;
-          onCalendar = "daily";
-        };
-      };
-
       # Nerd Fonts and Google Fonts
       fonts.packages = with pkgs; [
         nerd-fonts.fira-code
